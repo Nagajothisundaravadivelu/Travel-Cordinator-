@@ -69,6 +69,24 @@ The sample request can be replaced with a JSON file:
 python -m travel_planner.main --request request.json
 ```
 
+## Streamlit Community Cloud
+
+Deploy from the repository root using `streamlit_app.py` as the app file. The
+root-level `requirements.txt` installs this project and Streamlit. In the
+Streamlit Cloud app settings, add secrets using Streamlit's TOML format:
+
+```toml
+LLM_PROVIDER = "openrouter"
+OPENROUTER_API_KEY = "your-key"
+OPENROUTER_MODEL = "openrouter/openai/gpt-4o-mini"
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+DEMO_MODE = "false"
+```
+
+Do not commit API keys. If the deployed app cannot connect to the LLM provider,
+check that the provider URL and secrets are correct and that the deployment can
+reach the provider.
+
 ## Provider configuration
 
 The tool adapters use the following optional integrations:
